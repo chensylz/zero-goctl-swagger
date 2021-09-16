@@ -10,7 +10,7 @@ info(
 type (
   RegisterReq {
     Age int `json:"age,optional,range=[1:]"`
-    Username string `json:"username,options=you|me"`
+    Username string `json:"username,options=you|m"`
     Password string `json:"password"`
     Mobile string `json:"mobile"`
   }

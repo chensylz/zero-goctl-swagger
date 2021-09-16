@@ -416,6 +416,7 @@ func parserTags(option string, ret *swaggerSchemaObject) {
 			var enums []string
 			if strings.Contains(enumArray, optionSeparator) {
 				enums = strings.Split(option, optionSeparator)
+				enums[0] = enums[0][8:]
 			} else {
 				enums = []string{enumArray}
 			}
