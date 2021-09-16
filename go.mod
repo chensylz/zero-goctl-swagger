@@ -1,4 +1,4 @@
-module github.com/1278651995/goctl-swagger
+module github.com/1278651995/zero-goctl-swagger
 
 go 1.16
 

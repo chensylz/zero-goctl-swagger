@@ -5,7 +5,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/1278651995/goctl-swagger/action"
+	"github.com/1278651995/zero-goctl-swagger/action"
 	"github.com/urfave/cli/v2"
 )
 
