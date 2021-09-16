@@ -436,14 +436,12 @@ func parserTags(option string, ret *swaggerSchemaObject) {
 		}
 		num1, num2 := rangeArray[0][1:], rangeArray[1][:len(rangeArray[1]) - 1]
 		float1, err := strconv.ParseFloat(num1, 64)
-		if err != nil {
-			return
+		if err == nil {
+			ret.Minimum = float1
 		}
-		ret.Minimum = float1
 		float2, err := strconv.ParseFloat(num2, 64)
-		if err != nil {
-			return
+		if err == nil {
+			ret.Maximum = float2
 		}
-		ret.Maximum = float2
 	}
 }
