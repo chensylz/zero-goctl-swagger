@@ -245,9 +245,10 @@ func renderReplyAsDefinition(d swaggerDefinitionsObject, m messageMap, p []spec.
 			if schema.Properties == nil {
 				schema.Properties = &swaggerSchemaObjectProperties{}
 			}
-			if kv.Key != "" {
-				*schema.Properties = append(*schema.Properties, kv)
+			if kv.Key == "" {
+				continue
 			}
+			*schema.Properties = append(*schema.Properties, kv)
 
 			for _, tag := range member.Tags() {
 				if len(tag.Options) == 0 {
@@ -265,8 +266,9 @@ func renderReplyAsDefinition(d swaggerDefinitionsObject, m messageMap, p []spec.
 				}
 			}
 		}
-
-		d[i2.Name()] = schema
+		if i2.Name() != "" {
+			d[i2.Name()] = schema
+		}
 	}
 }
 
