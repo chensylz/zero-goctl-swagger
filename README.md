@@ -101,6 +101,8 @@ $ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/1278651
   
 ### 4. 结合go-zero使用自动生成接口文档
 
+具体可参考 [gozero-template](https://github.com/1278651995/gozero-template)
+
 - 定义swag, swag-json接口
 
   ```
