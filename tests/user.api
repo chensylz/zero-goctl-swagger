@@ -8,7 +8,11 @@ info(
 
 
 type (
+  IDRequest {
+    ID int `path:"id,range=[1:]"`
+  }
   RegisterReq {
+    IDRequest
     Age int `json:"age,optional,range=[1:]"`
     Username string `json:"username,options=you|m"`
     Password string `json:"password"`
@@ -20,7 +24,7 @@ type (
     Password string `json:"password"`//测试2
   }
   UserInfoReq {
-    Id string `path:"id"`
+    IDRequest
   }
 
   UserInfoReply {

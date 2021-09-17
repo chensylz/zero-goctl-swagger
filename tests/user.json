@@ -111,6 +111,13 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": false,
+            "type": "invalid",
+            "format": "UNKNOWN"
           }
         ],
         "tags": [
@@ -120,6 +127,20 @@
     }
   },
   "definitions": {
+    "IDRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1
+        }
+      },
+      "title": "IDRequest",
+      "required": [
+        "id"
+      ]
+    },
     "LoginReq": {
       "type": "object",
       "properties": {
@@ -201,15 +222,8 @@
     },
     "UserInfoReq": {
       "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        }
-      },
-      "title": "UserInfoReq",
-      "required": [
-        "id"
-      ]
+      "properties": {},
+      "title": "UserInfoReq"
     },
     "UserSearchReq": {
       "type": "object",
