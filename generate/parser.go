@@ -289,6 +289,11 @@ func schemaOfField(member spec.Member) swaggerSchemaObject {
 		core = schemaCore{
 			Ref: "#/definitions/" + refTypeName,
 		}
+		if refTypeName == "interface{}" {
+			core = schemaCore{
+				Type: "object",
+			}
+		}
 	case reflect.Slice:
 		tempKind := swaggerMapTypes[strings.Replace(member.Type.Name(), "[]", "", -1)]
 		ftype, format, ok := primitiveSchema(tempKind, member.Type.Name())
