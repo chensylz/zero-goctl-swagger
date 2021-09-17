@@ -27,7 +27,7 @@ type (
     Name string `json:"name"`
     Age int `json:"age,range=[0:100],optional"`
     Birthday string `json:"birthday"`
-    Description string `json:"description"`
+    Description interface{} `json:"description"`
     Tag []string `json:"tag"`
   }
 
@@ -60,4 +60,9 @@ service user-api {
 )
   @handler searchUser
   get /api/user/search (UserSearchReq) returns (UserInfoReply)
+
+  @handler swag
+  get /swag() returns()
+  @handler swagJson
+  get /swag-json() returns()
 }

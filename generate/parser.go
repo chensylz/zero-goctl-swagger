@@ -25,6 +25,8 @@ const (
 	equalToken      = "="
 )
 
+var excludePaths = []string{"/swag", "/swag-json"}
+
 func applyGenerate(p *plugin2.Plugin, host string, basePath string) (*swaggerObject, error) {
 	title, _ := strconv.Unquote(p.Api.Info.Properties["title"])
 	version, _ := strconv.Unquote(p.Api.Info.Properties["version"])
@@ -74,6 +76,16 @@ func renderServiceRoutes(service spec.Service, groups []spec.Group, paths swagge
 	for _, group := range groups {
 		for _, route := range group.Routes {
 			path := route.Path
+			isExclude := false
+			for _, excludePath := range excludePaths {
+				if path == excludePath {
+					isExclude = true
+					break
+				}
+			}
+			if isExclude {
+				continue
+			}
 			parameters := swaggerParametersObject{}
 			if countParams(path) > 0 {
 				p := strings.Split(path, "/")

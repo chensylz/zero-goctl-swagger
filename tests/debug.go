@@ -26,7 +26,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	err = generate.Do("./tests/user.api", "", "/", p)
+	err = generate.Do("./tests/user.json", "", "/", p)
 	if err != nil {
 		fmt.Println(err)
 	}
