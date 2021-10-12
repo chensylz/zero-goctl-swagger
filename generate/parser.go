@@ -25,7 +25,7 @@ const (
 	equalToken      = "="
 )
 
-var excludePaths = []string{"/swag", "/swag-json"}
+var excludePaths = []string{"/swagger", "/swagger-json"}
 
 func applyGenerate(p *plugin2.Plugin, host string, basePath string) (*swaggerObject, error) {
 	title, _ := strconv.Unquote(p.Api.Info.Properties["title"])

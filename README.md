@@ -103,16 +103,16 @@ $ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/1278651
 
 具体可参考 [gozero-template](https://github.com/1278651995/gozero-template)
 
-- 定义swag, swag-json接口
+- 定义swagger, swagger-json接口
 
   ```
   	@handler swag
-  	get /swag() returns()
+  	get /swagger() returns()
   	@handler swagJson
-  	get /swag-json() returns()
+  	get /swagger-json() returns()
   ```
 
-  > 注  /swag, /swag-json地址可自己定义，如需自定义，需修改zero-goctl-swagger的excludePaths取消解析路由
+  > 注  /swagger, /swagger-json地址可自己定义，如需自定义，需修改zero-goctl-swagger的excludePaths取消解析路由
 
 - 修改生成后的Handler
 
