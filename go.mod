@@ -1,12 +1,12 @@
 module github.com/1278651995/zero-goctl-swagger
 
-go 1.16
+go 1.17
 
 require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
 	github.com/golang/glog v1.0.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
-	github.com/tal-tech/go-zero v1.2.1
+	github.com/tal-tech/go-zero v1.2.2
 	github.com/urfave/cli/v2 v2.3.0
 	go.opentelemetry.io/otel v1.0.0-RC3 // indirect
 	go.uber.org/automaxprocs v1.4.0 // indirect

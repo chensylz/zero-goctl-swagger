@@ -290,12 +290,17 @@ func schemaOfField(member spec.Member) swaggerSchemaObject {
 		refTypeName := strings.Replace(member.Type.Name(), "[", "", 1)
 		refTypeName = strings.Replace(refTypeName, "]", "", 1)
 		refTypeName = strings.Replace(refTypeName, "*", "", 1)
-		core = schemaCore{
-			Ref: "#/definitions/" + refTypeName,
-		}
-		if refTypeName == "interface{}" {
+		refTypeName = strings.Replace(refTypeName, "{", "", 1)
+		refTypeName = strings.Replace(refTypeName, "}", "", 1)
+
+
+		if refTypeName == "interface" {
+			core = schemaCore{Type: "object"}
+		} else if refTypeName == "mapstringstring" {
+			core = schemaCore{Type: "object"}
+		} else {
 			core = schemaCore{
-				Type: "object",
+				Ref: "#/definitions/" + refTypeName,
 			}
 		}
 	case reflect.Slice:
@@ -338,6 +343,9 @@ func schemaOfField(member spec.Member) swaggerSchemaObject {
 				schemaCore: core,
 				Properties: props,
 			}
+		}
+		if strings.HasPrefix(member.Type.Name(), "map") {
+			fmt.Println("暂不支持map类型")
 		}
 	default:
 		ret = swaggerSchemaObject{
