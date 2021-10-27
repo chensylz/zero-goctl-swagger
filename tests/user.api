@@ -1,72 +1,188 @@
 info(
-  title: "type title here"
-  desc: "type desc here"
-  author: "type author here"
-  email: "type email here"
-  version: "type version here"
+    title: "type title here"
+    desc: "type desc here"
+    author: "type author here"
+    email: "type email here"
+    version: "type version here"
 )
 
 
 type (
-  IDRequest {
-    ID int `path:"id,range=[1:]"`
-  }
-  RegisterReq {
-    IDRequest
-    Age int `json:"age,optional,range=[1:]"`
-    Username string `json:"username,options=you|m"`
-    Password string `json:"password"`
-    Mobile string `json:"mobile"`
-  }
+//    IDRequest {
+//        ID int `path:"id,range=[1:]"`
+//    }
+//    RegisterReq {
+//        IDRequest
+//        Age int `json:"age,optional,range=[1:]"`
+//        Username string `json:"username,options=you|m"`
+//        Password string `json:"password"`
+//        Mobile string `json:"mobile"`
+//    }
+//
+//    LoginReq {
+//        Username string `json:"username"` //测试
+//        Password string `json:"password"` //测试2
+//    }
+//    UserInfoReq {
+//        IDRequest
+//    }
+//
+//    UserInfoReply {
+//        Name string `json:"name"`
+//        Age int `json:"age,range=[0:100],optional"`
+//        Birthday string `json:"birthday"`
+//        Description interface{} `json:"description"`
+//        Tag []string `json:"tag"`
+//    }
+//
+//    UserSearchReq {
+//        KeyWord string `form:"keyWord"` // 关键词
+//    }
+    Groupon {
+        // ID of the ent.
+        ID int `json:"id,optional"`
+        // UID holds the value of the "uid" field.
+        // merchandise uid
+        UID string `json:"uid,optional"`
+        // CreatedAt holds the value of the "created_at" field.
+        // 创建时间
+        CreatedAt string `json:"created_at,optional"`
+        // UpdatedAt holds the value of the "updated_at" field.
+        // 更新时间
+        UpdatedAt string `json:"updated_at,optional"`
+        // DeletedAt holds the value of the "deleted_at" field.
+        // 删除时间
+        DeactivatedAt string `json:"deactivated_at,optional"`
+        // Images holds the value of the "images" field.
+        // 图片列表用,隔开
+        Images []string `json:"images"`
+        // 城市
+        City string `json:"city"`
+        // 商户名
+        BusinessGroupName string `json:"business_group_name"`
+        // ImageShort holds the value of the "image_short" field.
+        // 缩略图
+        ImageShort string `json:"image_short"`
+        // Title holds the value of the "title" field.
+        // 商品标题
+        Title string `json:"title"`
+        // TitleShort holds the value of the "title_short" field.
+        // 商品简称
+        TitleShort string `json:"title_short"`
+        // OriginalPrice holds the value of the "original_price" field.
+        // 划线价格
+        OriginalPrice string `json:"original_price"`
+        // SellPrice holds the value of the "sell_price" field.
+        // 真实售价
+        SellPrice string `json:"sell_price"`
+        // SettlementPrice holds the value of the "settlement_price" field.
+        // 结算价格
+        SettlementPrice string `json:"settlement_price"`
+        // Stock holds the value of the "stock" field.
+        // 总库存
+        Stock int `json:"stock"`
+        // SalesVolume holds the value of the "sales_volume" field.
+        // 总销量
+        SalesVolume int `json:"sales_volume,optional"`
+        // ValidityType holds the value of the "validity_type" field.
+        // 有效期类型
+        ValidityType int `json:"validity_type"`
+        // DaysDelay holds the value of the "days_delay" field.
+        // 延迟生效天数
+        DaysDelay int `json:"days_delay,optional"`
+        // DateEffect holds the value of the "date_effect" field.
+        // 生效日期
+        DateEffect string `json:"date_effect"`
+        // DateExpire holds the value of the "date_expire" field.
+        // 失效日期
+        DateExpire string `json:"date_expire"`
+        // OnlineAt holds the value of the "online_at" field.
+        // 上架时间
+        OnlineAt string `json:"online_at"`
+        // OfflineAt holds the value of the "offline_at" field.
+        // 下架时间
+        OfflineAt string `json:"offline_at"`
+        // Description holds the value of the "description" field.
+        // 商品描述
+        Description string `json:"description,optional"`
+        // ItemStatus holds the value of the "item_status" field.
+        // 上下架状态
+        ItemStatus string `json:"item_status,options=online|offline"`
+        // BusinessGroupID holds the value of the "business_group_id" field.
+        // 商户uid
+        BusinessGroupID int `json:"business_group_id"`
+        // AutoRefund holds the value of the "auto_refund" field.
+        // 过期退
+        AutoRefund bool `json:"auto_refund"`
+        // AnyRefund holds the value of the "any_refund" field.
+        // 随时退
+        AnyRefund bool `json:"any_refund"`
+        // HolidayUsable holds the value of the "holiday_usable" field.
+        // 假期是否可用
+        HolidayUsable bool `json:"holiday_usable"`
+        // IsAppointment holds the value of the "is_appointment" field.
+        // 是否可预约
+        IsAppointment bool `json:"is_appointment"`
+        // IsOverlap holds the value of the "is_overlap" field.
+        // 是否可叠加
+        IsOverlap string `json:"is_overlap,options=不可叠加|可叠加|不展示此条件"`
+        // IsShare holds the value of the "is_share" field.
+        // 是否可同享
+        IsShare string `json:"is_share,options=不与任何优惠同享|可与店内其他优惠同享|可与任意优惠同享|不展示此条件"`
+        // OtherRules holds the value of the "other_rules" field.
+        // 其他使用规则
+        OtherRules string `json:"other_rules"`
+        // ThirdPartyID holds the value of the "third_party_id" field.
+        // 第三方商品ID
+        ThirdPartyID string `json:"third_party_id,optional"`
+        // ValidBusinesses holds the value of the "valid_businesses" field.
+        // 适用门店
+        ValidBusinesses []string `json:"valid_businesses"`
+    }
 
-  LoginReq {
-    Username string `json:"username"` //测试
-    Password string `json:"password"`//测试2
-  }
-  UserInfoReq {
-    IDRequest
-  }
-
-  UserInfoReply {
-    Name string `json:"name"`
-    Age int `json:"age,range=[0:100],optional"`
-    Birthday string `json:"birthday"`
-    Description interface{} `json:"description"`
-    Tag []string `json:"tag"`
-  }
-
-  UserSearchReq {
-    KeyWord string `form:"keyWord"` // 关键词
-  }
+    UpdateGrouponRequest {
+        BusinessGroupID int     `path:"business_group_id"`
+        GrouponID       int     `path:"groupon_id"`
+        Data            Groupon `json:"data"`
+    }
+    UserUpdateResponse {
+      Hello string `json:"hello"`
+    }
 )
 
 service user-api {
-@doc(
-  summary: 注册
-)
-  @handler register
-  post /api/user/register (RegisterReq)
+    //  @doc(
+    //    summary: 注册
+    //  )
+    //  @handler register
+    //  post /api/user/register (RegisterReq)
+    //
+    //  @doc(
+    //    summary: 登录
+    //  )
+    //  @handler login
+    //  post /api/user/login (LoginReq)
+    //
+    //  @doc(
+    //    summary: 获取用户信息
+    //  )
+    //  @handler getUserInfo
+    //  get /api/user/:id (UserInfoReq) returns (UserInfoReply)
+    //
+    //  @doc(
+    //    summary: 用户搜索
+    //  )
+    //  @handler searchUser
+    //  get /api/user/search (UserSearchReq) returns (UserInfoReply)
 
 @doc(
-  summary: 登录
+    summary: 测试更新
 )
-  @handler login
-  post /api/user/login (LoginReq)
+    @handler HanlderUpdate
+    put /api/user/:user_id/business_group/:business_group_id (UpdateGrouponRequest) returns (UserUpdateResponse)
 
-@doc(
-  summary: 获取用户信息
-)
-  @handler getUserInfo
-  get /api/user/:id (UserInfoReq) returns (UserInfoReply)
-
-@doc(
-  summary: 用户搜索
-)
-  @handler searchUser
-  get /api/user/search (UserSearchReq) returns (UserInfoReply)
-
-  @handler swag
-  get /swagger() returns()
-  @handler swagJson
-  get /swagger-json() returns()
+    @handler swag
+    get /swagger () returns ()
+    @handler swagJson
+    get /swagger-json () returns ()
 }

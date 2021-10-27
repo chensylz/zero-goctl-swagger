@@ -17,107 +17,38 @@
     "application/json"
   ],
   "paths": {
-    "/api/user/login": {
-      "post": {
-        "summary": "登录",
-        "operationId": "login",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {}
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LoginReq"
-            }
-          }
-        ],
-        "tags": [
-          "user-api"
-        ]
-      }
-    },
-    "/api/user/register": {
-      "post": {
-        "summary": "注册",
-        "operationId": "register",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {}
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/RegisterReq"
-            }
-          }
-        ],
-        "tags": [
-          "user-api"
-        ]
-      }
-    },
-    "/api/user/search": {
-      "get": {
-        "summary": "用户搜索",
-        "operationId": "searchUser",
+    "/api/user/{user_id}/business_group/{business_group_id}": {
+      "put": {
+        "summary": "测试更新",
+        "operationId": "HanlderUpdate",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/UserInfoReply"
+              "$ref": "#/definitions/UserUpdateResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "keyWord",
-            "description": " 关键词",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "user-api"
-        ]
-      }
-    },
-    "/api/user/{id}": {
-      "get": {
-        "summary": "获取用户信息",
-        "operationId": "getUserInfo",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/UserInfoReply"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
+            "name": "user_id",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "",
-            "in": "query",
-            "required": false,
-            "type": "invalid",
-            "format": "UNKNOWN"
+            "name": "business_group_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateGrouponRequest"
+            }
           }
         ],
         "tags": [
@@ -127,115 +58,194 @@
     }
   },
   "definitions": {
-    "IDRequest": {
+    "Groupon": {
       "type": "object",
       "properties": {
         "id": {
           "type": "integer",
-          "format": "int32",
-          "minimum": 1
-        }
-      },
-      "title": "IDRequest",
-      "required": [
-        "id"
-      ]
-    },
-    "LoginReq": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string",
-          "description": "测试"
+          "format": "int32"
         },
-        "password": {
-          "type": "string",
-          "description": "测试2"
-        }
-      },
-      "title": "LoginReq",
-      "required": [
-        "username",
-        "password"
-      ]
-    },
-    "RegisterReq": {
-      "type": "object",
-      "properties": {
-        "age": {
+        "uid": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "deactivated_at": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "city": {
+          "type": "string"
+        },
+        "business_group_name": {
+          "type": "string"
+        },
+        "image_short": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "title_short": {
+          "type": "string"
+        },
+        "original_price": {
+          "type": "string"
+        },
+        "sell_price": {
+          "type": "string"
+        },
+        "settlement_price": {
+          "type": "string"
+        },
+        "stock": {
           "type": "integer",
-          "format": "int32",
-          "minimum": 1
+          "format": "int32"
         },
-        "username": {
-          "type": "string",
-          "enum": [
-            "you",
-            "m"
-          ]
-        },
-        "password": {
-          "type": "string"
-        },
-        "mobile": {
-          "type": "string"
-        }
-      },
-      "title": "RegisterReq",
-      "required": [
-        "username",
-        "password",
-        "mobile"
-      ]
-    },
-    "UserInfoReply": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "age": {
+        "sales_volume": {
           "type": "integer",
-          "format": "int32",
-          "maximum": 100
+          "format": "int32"
         },
-        "birthday": {
+        "validity_type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "days_delay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "date_effect": {
+          "type": "string"
+        },
+        "date_expire": {
+          "type": "string"
+        },
+        "online_at": {
+          "type": "string"
+        },
+        "offline_at": {
           "type": "string"
         },
         "description": {
-          "type": "object"
+          "type": "string"
         },
-        "tag": {
+        "item_status": {
+          "type": "string",
+          "enum": [
+            "online",
+            "offline"
+          ]
+        },
+        "business_group_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "auto_refund": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "any_refund": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "holiday_usable": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "is_appointment": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "is_overlap": {
+          "type": "string",
+          "enum": [
+            "不可叠加",
+            "可叠加",
+            "不展示此条件"
+          ]
+        },
+        "is_share": {
+          "type": "string",
+          "enum": [
+            "不与任何优惠同享",
+            "可与店内其他优惠同享",
+            "可与任意优惠同享",
+            "不展示此条件"
+          ]
+        },
+        "other_rules": {
+          "type": "string"
+        },
+        "third_party_id": {
+          "type": "string"
+        },
+        "valid_businesses": {
           "type": "array",
           "items": {
             "type": "string"
           }
         }
       },
-      "title": "UserInfoReply",
+      "title": "Groupon",
       "required": [
-        "name",
-        "birthday",
-        "description",
-        "tag"
+        "images",
+        "city",
+        "business_group_name",
+        "image_short",
+        "title",
+        "title_short",
+        "original_price",
+        "sell_price",
+        "settlement_price",
+        "stock",
+        "validity_type",
+        "date_effect",
+        "date_expire",
+        "online_at",
+        "offline_at",
+        "item_status",
+        "business_group_id",
+        "auto_refund",
+        "any_refund",
+        "holiday_usable",
+        "is_appointment",
+        "is_overlap",
+        "is_share",
+        "other_rules",
+        "valid_businesses"
       ]
     },
-    "UserInfoReq": {
-      "type": "object",
-      "properties": {},
-      "title": "UserInfoReq"
-    },
-    "UserSearchReq": {
+    "UpdateGrouponRequest": {
       "type": "object",
       "properties": {
-        "keyWord": {
-          "type": "string",
-          "description": " 关键词"
+        "data": {
+          "$ref": "#/definitions/Groupon"
         }
       },
-      "title": "UserSearchReq",
+      "title": "UpdateGrouponRequest",
       "required": [
-        "keyWord"
+        "data"
+      ]
+    },
+    "UserUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "hello": {
+          "type": "string"
+        }
+      },
+      "title": "UserUpdateResponse",
+      "required": [
+        "hello"
       ]
     }
   },
