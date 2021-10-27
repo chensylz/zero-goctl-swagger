@@ -218,6 +218,8 @@ func renderServiceRoutes(service spec.Service, groups []spec.Group, paths swagge
 				pathItemObject.Delete = operationObject
 			case http.MethodPut:
 				pathItemObject.Put = operationObject
+			case http.MethodPatch:
+				pathItemObject.Patch = operationObject
 			}
 
 			paths[path] = pathItemObject

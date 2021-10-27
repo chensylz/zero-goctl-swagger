@@ -17,45 +17,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/user/{user_id}/business_group/{business_group_id}": {
-      "put": {
-        "summary": "测试更新",
-        "operationId": "HanlderUpdate",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/UserUpdateResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "business_group_id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UpdateGrouponRequest"
-            }
-          }
-        ],
-        "tags": [
-          "user-api"
-        ]
-      }
-    }
+    "/api/user/{user_id}/business_group/{business_group_id}": {}
   },
   "definitions": {
     "Groupon": {

@@ -179,7 +179,7 @@ service user-api {
     summary: 测试更新
 )
     @handler HanlderUpdate
-    put /api/user/:user_id/business_group/:business_group_id (UpdateGrouponRequest) returns (UserUpdateResponse)
+    patch /api/user/:user_id/business_group/:business_group_id (UpdateGrouponRequest) returns (UserUpdateResponse)
 
     @handler swag
     get /swagger () returns ()
