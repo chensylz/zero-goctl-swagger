@@ -62,7 +62,6 @@ func applyGenerate(p *plugin2.Plugin, host string, basePath string) (*swaggerObj
 	s.SecurityDefinitions["apiKey"] = newSecDefValue
 	s.Security = append(s.Security, swaggerSecurityRequirementObject{"apiKey": []string{}})
 
-	
 	requestResponseRefs := refMap{}
 	renderServiceRoutes(p.Api.Service, p.Api.Service.Groups, s.Paths, requestResponseRefs)
 	m := messageMap{}
@@ -298,7 +297,6 @@ func schemaOfField(member spec.Member) swaggerSchemaObject {
 		refTypeName = strings.Replace(refTypeName, "{", "", 1)
 		refTypeName = strings.Replace(refTypeName, "}", "", 1)
 
-
 		if refTypeName == "interface" {
 			core = schemaCore{Type: "object"}
 		} else if refTypeName == "mapstringstring" {
@@ -348,9 +346,6 @@ func schemaOfField(member spec.Member) swaggerSchemaObject {
 				schemaCore: core,
 				Properties: props,
 			}
-		}
-		if strings.HasPrefix(member.Type.Name(), "map") {
-			fmt.Println("暂不支持map类型")
 		}
 	default:
 		ret = swaggerSchemaObject{
@@ -428,12 +423,11 @@ func del(s []string, str string) []string {
 			break
 		}
 	}
-	if index != - 1 {
+	if index != -1 {
 		s = append(s[:index], s[index+1:]...) // 删除中间1个元素
 	}
 	return s
 }
-
 
 func parserTags(option string, ret *swaggerSchemaObject) {
 	option = strings.Trim(option, " ")
@@ -469,7 +463,7 @@ func parserTags(option string, ret *swaggerSchemaObject) {
 		if len(rangeArray) != 2 {
 			return
 		}
-		num1, num2 := rangeArray[0][1:], rangeArray[1][:len(rangeArray[1]) - 1]
+		num1, num2 := rangeArray[0][1:], rangeArray[1][:len(rangeArray[1])-1]
 		float1, err := strconv.ParseFloat(num1, 64)
 		if err == nil {
 			ret.Minimum = float1
