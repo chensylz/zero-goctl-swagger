@@ -17,197 +17,230 @@
     "application/json"
   ],
   "paths": {
-    "/api/user/{user_id}/business_group/{business_group_id}": {}
-  },
-  "definitions": {
-    "Groupon": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "uid": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "deactivated_at": {
-          "type": "string"
-        },
-        "images": {
-          "type": "array",
-          "items": {
-            "type": "string"
+    "/": {
+      "get": {
+        "summary": "你好",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
           }
         },
-        "city": {
-          "type": "string"
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/api/user/login": {
+      "post": {
+        "summary": "登录",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
         },
-        "business_group_name": {
-          "type": "string"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/api/user/register": {
+      "post": {
+        "summary": "注册",
+        "operationId": "register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
         },
-        "image_short": {
-          "type": "string"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterReq"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/api/user/search": {
+      "get": {
+        "summary": "用户搜索",
+        "operationId": "searchUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserInfoReply"
+            }
+          }
         },
-        "title": {
-          "type": "string"
+        "parameters": [
+          {
+            "name": "keyWord",
+            "description": " 关键词",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "summary": "获取用户信息",
+        "operationId": "getUserInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserInfoReply"
+            }
+          }
         },
-        "title_short": {
-          "type": "string"
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": false,
+            "type": "invalid",
+            "format": "UNKNOWN"
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "IDRequest": {
+      "type": "object",
+      "title": "IDRequest"
+    },
+    "LoginReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "测试"
         },
-        "original_price": {
-          "type": "string"
-        },
-        "sell_price": {
-          "type": "string"
-        },
-        "settlement_price": {
-          "type": "string"
-        },
-        "stock": {
+        "password": {
+          "type": "string",
+          "description": "测试2"
+        }
+      },
+      "title": "LoginReq",
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "RegisterReq": {
+      "type": "object",
+      "properties": {
+        "age": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 1
         },
-        "sales_volume": {
-          "type": "integer",
-          "format": "int32"
+        "username": {
+          "type": "string",
+          "enum": [
+            "you",
+            "m"
+          ]
         },
-        "validity_type": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "days_delay": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "date_effect": {
+        "password": {
           "type": "string"
         },
-        "date_expire": {
+        "mobile": {
+          "type": "string"
+        }
+      },
+      "title": "RegisterReq",
+      "required": [
+        "username",
+        "password",
+        "mobile"
+      ]
+    },
+    "UserInfoReply": {
+      "type": "object",
+      "properties": {
+        "name": {
           "type": "string"
         },
-        "online_at": {
-          "type": "string"
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 100
         },
-        "offline_at": {
+        "birthday": {
           "type": "string"
         },
         "description": {
-          "type": "string"
+          "type": "object"
         },
-        "item_status": {
-          "type": "string",
-          "enum": [
-            "online",
-            "offline"
-          ]
-        },
-        "business_group_id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "auto_refund": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "any_refund": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "holiday_usable": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "is_appointment": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "is_overlap": {
-          "type": "string",
-          "enum": [
-            "不可叠加",
-            "可叠加",
-            "不展示此条件"
-          ]
-        },
-        "is_share": {
-          "type": "string",
-          "enum": [
-            "不与任何优惠同享",
-            "可与店内其他优惠同享",
-            "可与任意优惠同享",
-            "不展示此条件"
-          ]
-        },
-        "other_rules": {
-          "type": "string"
-        },
-        "third_party_id": {
-          "type": "string"
-        },
-        "valid_businesses": {
+        "tag": {
           "type": "array",
           "items": {
             "type": "string"
           }
         }
       },
-      "title": "Groupon",
+      "title": "UserInfoReply",
       "required": [
-        "images",
-        "city",
-        "business_group_name",
-        "image_short",
-        "title",
-        "title_short",
-        "original_price",
-        "sell_price",
-        "settlement_price",
-        "stock",
-        "validity_type",
-        "date_effect",
-        "date_expire",
-        "online_at",
-        "offline_at",
-        "item_status",
-        "business_group_id",
-        "auto_refund",
-        "any_refund",
-        "holiday_usable",
-        "is_appointment",
-        "is_overlap",
-        "is_share",
-        "other_rules",
-        "valid_businesses"
+        "name",
+        "birthday",
+        "description",
+        "tag"
       ]
     },
-    "UpdateGrouponRequest": {
+    "UserInfoReq": {
       "type": "object",
-      "properties": {
-        "data": {
-          "$ref": "#/definitions/Groupon"
-        }
-      },
-      "title": "UpdateGrouponRequest",
-      "required": [
-        "data"
-      ]
+      "properties": {},
+      "title": "UserInfoReq"
     },
-    "UserUpdateResponse": {
+    "UserSearchReq": {
       "type": "object",
       "properties": {
-        "hello": {
-          "type": "string"
+        "keyWord": {
+          "type": "string",
+          "description": " 关键词"
         }
       },
-      "title": "UserUpdateResponse",
+      "title": "UserSearchReq",
       "required": [
-        "hello"
+        "keyWord"
       ]
     }
   },

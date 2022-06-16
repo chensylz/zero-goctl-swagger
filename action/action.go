@@ -2,8 +2,8 @@ package action
 
 import (
 	"github.com/1278651995/zero-goctl-swagger/generate"
-	plugin2 "github.com/tal-tech/go-zero/tools/goctl/plugin"
 	"github.com/urfave/cli/v2"
+	plugin2 "github.com/zeromicro/go-zero/tools/goctl/plugin"
 )
 
 func Generator(ctx *cli.Context) error {
